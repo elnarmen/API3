@@ -7,8 +7,7 @@ def main():
     load_dotenv()
     token = os.getenv('TELEGRAM_TOKEN')
     bot = telegram.Bot(token=token)
-    bot.send_message(chat_id='@kosmo_photo_api', text="I'm sorry Dave I'm afraid I can't do that.")
-
+    bot.send_photo(chat_id='@kosmo_photo_api', photo=open('images/nasa_epic_0.png', 'rb'), timeout=20.)
 
 if __name__ == '__main__':
     main()

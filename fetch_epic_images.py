@@ -14,7 +14,8 @@ def fetch_epic(api_key):
         download_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
                        f'png/{item["image"]}.' \
                        f'png?api_key={api_key}'
-        download_picture(download_url, f'images/epic_{i}.png')
+        download_picture(download_url, f'images/nasa_epic_{i}.png')
+
 
 
 def main():
