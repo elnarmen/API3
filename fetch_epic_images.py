@@ -5,11 +5,10 @@ from spase_images_api import download_picture
 
 
 def fetch_epic(api_key):
-    url = 'https://api.nasa.gov/EPIC/api/natural/images'
+    url = 'https://epic.gsfc.nasa.gov/api/natural'
     payload = {'api_key': api_key}
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    date = '/'.join(response.json()[0]['date'][:10].split('-'))
     for i, item in enumerate(response.json()):
         download_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
                        f'png/{item["image"]}.' \
