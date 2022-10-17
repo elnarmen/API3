@@ -1,6 +1,5 @@
 import os
 import requests
-import argparse
 from spase_images_api import get_extension
 from spase_images_api import download_picture
 from dotenv import load_dotenv
