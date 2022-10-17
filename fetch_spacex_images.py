@@ -30,7 +30,6 @@ def main():
     )
     parser.add_argument(
         '--id',
-        default='latest',
         help='''
                 Введите ID запуска, чтобы загрузить фото
                 или сразу жмите "Enter", чтобы загрузить
