@@ -34,7 +34,8 @@ def main():
                 Введите ID запуска, чтобы загрузить фото
                 или сразу жмите "Enter", чтобы загрузить
                 фото последнего запуска
-            '''
+             ''',
+        default='latest'
         )
     args = parser.parse_args()
     fetch_spacex_last_launch(args.id)
