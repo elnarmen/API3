@@ -20,7 +20,7 @@ def fetch_epic(api_key):
 
 def main():
     load_dotenv()
-    api_key = os.getenv('API_KEY')
+    api_key = os.getenv('NASA_API_KEY')
     fetch_epic(api_key)
 
 

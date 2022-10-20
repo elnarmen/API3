@@ -22,7 +22,7 @@ def fetch_nasa_apod(api_key, token):
 def main():
     load_dotenv()
     count_of_images = os.getenv('COUNT_OF_IMAGES')
-    api_key = os.getenv('API_KEY')
+    api_key = os.getenv('NASA_API_KEY')
     fetch_nasa_apod(api_key, count_of_images)
 
 
