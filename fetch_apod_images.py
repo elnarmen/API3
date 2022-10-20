@@ -5,10 +5,10 @@ from spase_images_api import download_picture
 from dotenv import load_dotenv
 
 
-def fetch_nasa_apod(api_key, amount):
+def fetch_nasa_apod(api_key, count):
     url = f'https://api.nasa.gov/planetary/apod'
     payload = {
-        'count': amount,
+        'count': count,
         'api_key': api_key
     }
     response = requests.get(url, params=payload)
