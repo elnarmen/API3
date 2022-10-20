@@ -23,12 +23,13 @@ def main():
                         )
     args = parser.parse_args()
     bot = telegram.Bot(token=token)
+    chat_id = os.getenv('TG_CHAT_ID')
     files_in_dir = os.listdir('images')
     while True:
         shuffle(files_in_dir)
         for file_name in files_in_dir:
             bot.send_photo(
-                chat_id='@kosmo_photo_api',
+                chat_id=chat_id,
                 photo=open(f'images/{file_name}', 'rb'),
                 timeout=20.)
             time.sleep(args.interval * 3600)

@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 def main():
     load_dotenv()
     token = os.getenv('TELEGRAM_TOKEN')
+    chat_id = os.getenv('TG_CHAT_ID')
     parser = argparse.ArgumentParser(
         description='''Скрипт публикует изображение в телеграм-канал "КосмоФото"'''
     )
@@ -20,14 +21,14 @@ def main():
     files_in_dir = os.listdir('images')
     if args.name in files_in_dir:
         bot.send_photo(
-            chat_id='@kosmo_photo_api',
+            chat_id=chat_id,
             photo=open(f'images/{args.name}', 'rb'),
             timeout=20.
         )
     else:
         file_name = choice(files_in_dir)
         bot.send_photo(
-            chat_id='@kosmo_photo_api',
+            chat_id=chat_id,
             photo=open(f'images/{file_name}', 'rb'),
             timeout=20.
         )
