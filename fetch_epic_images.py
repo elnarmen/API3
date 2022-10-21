@@ -11,11 +11,11 @@ def fetch_epic(api_key):
     response.raise_for_status()
     date = '/'.join(response.json()[0]['date'][:10].split('-'))
     for i, response_element in enumerate(response.json()):
-        download_url = f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
-                       f'png/{response_element["image"]}.' \
-                       f'png?api_key={api_key}'
-        download_picture(download_url, f'images/nasa_epic_{i}.png')
-
+        download_url = \
+            f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
+            f'png/{response_element["image"]}.png'
+        payload = {'api_key': api_key}
+        download_picture(download_url, f'images/nasa_epic_{i}.png',  payload=payload)
 
 
 def main():

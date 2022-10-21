@@ -10,10 +10,11 @@ def get_extension(url):
     return extension
 
 
-def download_picture(url, path):
+def download_picture(url, path, payload=''):
     path = pathlib.Path(path)
     path.parent.mkdir(exist_ok=True)
-    response = requests.get(url)
+    payload = payload
+    response = requests.get(url, params=payload)
     response.raise_for_status()
     with open(path, 'wb') as file:
         file.write(response.content)
