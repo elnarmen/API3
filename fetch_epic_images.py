@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-from spase_images_api import download_picture
+from functions_for_downloading_images import download_picture
 
 
 def fetch_epic(api_key):

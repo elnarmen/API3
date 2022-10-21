@@ -1,7 +1,7 @@
 import os
 import requests
-from spase_images_api import get_extension
-from spase_images_api import download_picture
+from functions_for_downloading_images import get_extension
+from functions_for_downloading_images import download_picture
 from dotenv import load_dotenv
 
 
