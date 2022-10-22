@@ -25,15 +25,17 @@ def main():
     bot = telegram.Bot(token=token)
     chat_id = os.getenv('TG_CHAT_ID')
     files_in_dir = os.listdir('images')
+    path_to_dir = os.path.join(os.getcwd(), 'images')
     while True:
         shuffle(files_in_dir)
         for file_name in files_in_dir:
-            with open(f'images/{file_name}', 'rb') as photo:
+            path_to_file = os.path.join(path_to_dir, file_name)
+            with open(path_to_file, 'rb') as photo:
                 bot.send_photo(
                     chat_id=chat_id,
                     photo=photo,
                     timeout=20.)
-            time.sleep(args.interval)
+            time.sleep(args.interval * 3600)
 
 
 if __name__ == '__main__':

@@ -19,8 +19,10 @@ def main():
     args = parser.parse_args()
     bot = telegram.Bot(token=token)
     files_in_dir = os.listdir('images')
+    path_to_dir = os.path.join(os.getcwd(), 'images')
     if args.name in files_in_dir:
-        with open(f'images/{args.name}', 'rb') as photo:
+        path_to_file = os.path.join(path_to_dir, arg.name)
+        with open(path_to_file, 'rb') as photo:
             bot.send_photo(
                 chat_id=chat_id,
                 photo=photo,
@@ -28,7 +30,8 @@ def main():
             )
     else:
         file_name = choice(files_in_dir)
-        with open(f'images/{file_name}', 'rb') as photo:
+        path_to_file = os.path.join(path_to_dir, file_name)
+        with open(path_to_file, 'rb') as photo:
             bot.send_photo(
                 chat_id=chat_id,
                 photo=photo,
