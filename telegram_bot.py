@@ -28,11 +28,12 @@ def main():
             )
     else:
         file_name = choice(files_in_dir)
-        bot.send_photo(
-            chat_id=chat_id,
-            photo=open(f'images/{file_name}', 'rb'),
-            timeout=20.
-        )
+        with open(f'images/{file_name}', 'rb') as photo:
+            bot.send_photo(
+                chat_id=chat_id,
+                photo=photo,
+                timeout=20.
+            )
 
 
 if __name__ == '__main__':
