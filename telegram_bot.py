@@ -22,21 +22,15 @@ def main():
     path_to_dir = os.path.join(os.getcwd(), 'images')
     if args.name in files_in_dir:
         path_to_file = os.path.join(path_to_dir, arg.name)
-        with open(path_to_file, 'rb') as photo:
-            bot.send_photo(
-                chat_id=chat_id,
-                photo=photo,
-                timeout=20.
-            )
     else:
         file_name = choice(files_in_dir)
         path_to_file = os.path.join(path_to_dir, file_name)
-        with open(path_to_file, 'rb') as photo:
-            bot.send_photo(
-                chat_id=chat_id,
-                photo=photo,
-                timeout=20.
-            )
+    with open(path_to_file, 'rb') as photo:
+        bot.send_photo(
+            chat_id=chat_id,
+            photo=photo,
+            timeout=20.
+        )
 
 
 if __name__ == '__main__':
