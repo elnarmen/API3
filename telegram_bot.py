@@ -20,11 +20,12 @@ def main():
     bot = telegram.Bot(token=token)
     files_in_dir = os.listdir('images')
     if args.name in files_in_dir:
-        bot.send_photo(
-            chat_id=chat_id,
-            photo=open(f'images/{args.name}', 'rb'),
-            timeout=20.
-        )
+        with open(f'images/{args.name}', 'rb') as photo:
+            bot.send_photo(
+                chat_id=chat_id,
+                photo=photo,
+                timeout=20.
+            )
     else:
         file_name = choice(files_in_dir)
         bot.send_photo(

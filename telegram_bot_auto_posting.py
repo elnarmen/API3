@@ -28,11 +28,12 @@ def main():
     while True:
         shuffle(files_in_dir)
         for file_name in files_in_dir:
-            bot.send_photo(
-                chat_id=chat_id,
-                photo=open(f'images/{file_name}', 'rb'),
-                timeout=20.)
-            time.sleep(args.interval * 3600)
+            with open(f'images/{file_name}', 'rb') as photo:
+                bot.send_photo(
+                    chat_id=chat_id,
+                    photo=photo,
+                    timeout=20.)
+            time.sleep(args.interval)
 
 
 if __name__ == '__main__':
