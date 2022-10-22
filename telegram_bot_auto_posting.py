@@ -24,13 +24,13 @@ def main():
     args = parser.parse_args()
     bot = telegram.Bot(token=token)
     chat_id = os.getenv('TG_CHAT_ID')
-    files_in_dir = os.listdir('images')
-    path_to_dir = os.path.join(os.getcwd(), 'images')
+    filenames = os.listdir('images')
+    directorypath = os.path.join(os.getcwd(), 'images')
     while True:
-        shuffle(files_in_dir)
-        for file_name in files_in_dir:
-            path_to_file = os.path.join(path_to_dir, file_name)
-            with open(path_to_file, 'rb') as photo:
+        shuffle(filenames)
+        for filename in filenames:
+            filepath = os.path.join(directorypath, filename)
+            with open(filepath, 'rb') as photo:
                 bot.send_photo(
                     chat_id=chat_id,
                     photo=photo,
