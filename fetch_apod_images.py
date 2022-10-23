@@ -13,13 +13,13 @@ def fetch_nasa_apod(api_key, count):
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    for i, response_element in enumerate(response.json()):
+    for index, response_element in enumerate(response.json()):
         extention = get_extension(response_element['url'])
-        os.path.join(os.path.join(os.getcwd(), 'images'), f'nasa_apod_{i}{extention}')
+        os.path.join(os.path.join(os.getcwd(), 'images'), f'nasa_apod_{index}{extention}')
         if extention:
             path = os.path.join(
                 os.path.join(os.getcwd(), 'images'),
-                f'nasa_apod_{i}{extention}'
+                f'nasa_apod_{index}{extention}'
             )
             download_picture(response_element['url'], path)
 
