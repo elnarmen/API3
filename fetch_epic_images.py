@@ -10,7 +10,8 @@ def fetch_epic(api_key):
     response = requests.get(url, params=payload)
     response.raise_for_status()
     date = '/'.join(response.json()[0]['date'][:10].split('-'))
-    for index, response_element in enumerate(response.json()):
+    response_json = response.json()
+    for index, response_element in enumerate(response_json):
         download_url = \
             f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
             f'png/{response_element["image"]}.png'
