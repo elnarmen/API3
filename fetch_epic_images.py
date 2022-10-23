@@ -15,7 +15,11 @@ def fetch_epic(api_key):
             f'https://api.nasa.gov/EPIC/archive/natural/{date}/' \
             f'png/{response_element["image"]}.png'
         payload = {'api_key': api_key}
-        download_picture(download_url, f'images/nasa_epic_{i}.png',  payload=payload)
+        path = os.path.join(
+            os.path.join(os.getcwd(), 'images'),
+            f'nasa_epic_{i}.png'
+        )
+        download_picture(download_url, path,  payload=payload)
 
 
 def main():
