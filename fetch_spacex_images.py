@@ -15,7 +15,8 @@ def get_urls(id):
     response = requests.get('https://api.spacexdata.com/v5/launches')
     response.raise_for_status()
     index = -2
-    while not response.json()[index]['links']['flickr']['original']:
+    response_json = response.json()[index]['links']['flickr']['original']
+    while not response_json:
         index -= 1
     urls = response.json()[index]['links']['flickr']['original']
     print(f'''
