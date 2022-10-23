@@ -5,8 +5,8 @@ from functions_for_downloading_images import download_picture
 from functions_for_downloading_images import get_extension
 
 
-def get_urls(id):
-    url = f'https://api.spacexdata.com/v5/launches/{id}'
+def get_urls(launch_id):
+    url = f'https://api.spacexdata.com/v5/launches/{launch_id}'
     response = requests.get(url)
     response.raise_for_status()
     urls = response.json()['links']['flickr']['original']
@@ -15,8 +15,8 @@ def get_urls(id):
     response = requests.get('https://api.spacexdata.com/v5/launches')
     response.raise_for_status()
     index = -2
-    response_json = response.json()[index]['links']['flickr']['original']
-    while not response_json:
+    while not response.json()[index]['links']['flickr']['original']:
+        #нельзя использовать переменную, т.к. на каждой итерации индекс отличается
         index -= 1
     urls = response.json()[index]['links']['flickr']['original']
     print(f'''
@@ -25,10 +25,12 @@ def get_urls(id):
     return urls
 
 
-def fetch_spacex_last_launch(id):
-    urls = get_urls(id)
-    for i, url in enumerate(urls):
-        download_picture(str(url), f'images/spacex_{i}{get_extension(url)}')
+def fetch_spacex_last_launch(launch_id):
+    urls = get_urls(launch_id)
+    for index, url in enumerate(urls):
+        path = os.path.join(os.path.join(os.getcwd(), 'images'),
+                            f'spacex_{index}{get_extension(url)}')
+        download_picture(str(url), path)
 
 
 def main():

@@ -18,9 +18,8 @@ def fetch_nasa_apod(api_key, count):
         extention = get_extension(response_element['url'])
         os.path.join(os.path.join(os.getcwd(), 'images'), f'nasa_apod_{index}{extention}')
         if extention:
-            path = os.path.join(
-                os.path.join(os.getcwd(), 'images'),
-                f'nasa_apod_{index}{extention}'
+            path = os.path.join(os.path.join(os.getcwd(), 'images'),
+                                f'nasa_apod_{index}{extention}'
             )
             download_picture(response_element['url'], path)
 
