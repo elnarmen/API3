@@ -15,10 +15,10 @@ def get_urls(launch_id):
     response = requests.get('https://api.spacexdata.com/v5/launches')
     response.raise_for_status()
     index = -2
-    while not response.json()[index]['links']['flickr']['original']:
-        #нельзя использовать переменную, т.к. на каждой итерации индекс отличается
+    decoded_response = response.json()
+    while not decoded_response[index]['links']['flickr']['original']:
         index -= 1
-    urls = response.json()[index]['links']['flickr']['original']
+    urls = decoded_response[index]['links']['flickr']['original']
     print(f'''
     В выбранном запуске отсутствуют фото. Будут загружены
     фотографии запуска с 'id': {response.json()[index]['id']}''')
